@@ -5,6 +5,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "webpack --env PLATFORM=web -c webpack/platform.config.ts",
+    "build:types": "webpack --env PLATFORM=web -c webpack/types.config.ts",
     "dev": "webpack --watch --env PLATFORM=web -c webpack/platform.config.ts",
     "clean": "rm -rf dist"
   },

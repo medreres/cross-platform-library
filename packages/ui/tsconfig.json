@@ -17,10 +17,6 @@
     "noEmit": false,
     "jsx": "react-jsx",
     "baseUrl": "./src",
-    "plugins": [
-      { "transform": "typescript-transform-paths", "afterDeclarations": true },
-      { "transform": "typescript-transform-paths" }
-    ],
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"],

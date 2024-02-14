@@ -4,17 +4,9 @@ import { externals } from "./externals";
 
 const dTsFiles = /(?<=(d))\.(tsx?)$/;
 const tsFilesWithoutDts = /(?<!(d))\.(tsx?)/;
-
-const platformsExtensions = {
-  web: [".web.ts", ".web.tsx"],
-  mobile: [".native.ts", ".native.tsx"],
-} satisfies Record<string, string[]>;
+const outputPath = path.resolve("dist", "types");
 
 const config: (env: Record<string, string>) => Configuration = (env) => {
-  const platform = env.PLATFORM as keyof typeof platformsExtensions;
-
-  const platformExtensions = platformsExtensions[platform];
-
   return {
     entry: "./src/index.tsx",
     mode: "development",
@@ -30,19 +22,28 @@ const config: (env: Record<string, string>) => Configuration = (env) => {
     module: {
       rules: [
         {
-          test: dTsFiles,
-          use: "ts-loader",
-          include: /src/,
+          test: /\.d\.ts$/,
+          loader: "file-loader",
+          options: {
+            name: "[path][name].[ext]",
+          },
         },
         {
-          test: tsFilesWithoutDts,
-          use: "ts-loader",
+          test: /\.(tsx?)$/,
+          loader: "ts-loader",
           include: /src/,
+          options: {
+            compilerOptions: {
+              // declaration: true,
+              declarationDir: outputPath,
+              noEmit: false,
+            },
+          },
         },
       ],
     },
     resolve: {
-      extensions: ["", ".js", ".jsx", ".ts", ".tsx", ...platformExtensions],
+      extensions: [".js", ".jsx", ".ts", ".tsx", ".d.ts"],
     },
   };
 };
