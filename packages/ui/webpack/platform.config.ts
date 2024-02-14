@@ -33,14 +33,17 @@ const config: (env: Record<string, string>) => Configuration = (env) => {
     mode: "development",
     devtool: "inline-source-map",
     output: {
-      filename: `index.${platform}.js`,
-      path: path.resolve(__dirname, "dist"),
+      // filename: `index.${platform}.js`,
+      filename: `index.js`,
+      path: path.resolve(__dirname, "../dist"),
       library: { type: "commonjs" },
+      clean: true,
     },
     externals,
     module: {
       rules: [
         {
+          test: /\.(tsx?)$/,
           use: "babel-loader",
           include: /src/,
         },

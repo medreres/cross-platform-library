@@ -13,7 +13,7 @@ export interface ButtonProps {
 export function Button({ text, onClick }: ButtonProps) {
   return (
     <TouchableOpacity style={styles.button} onPress={onClick}>
-      <Text style={styles.text}>{text}</Text>
+      <Text style={styles.text}>web</Text>
     </TouchableOpacity>
   );
 }

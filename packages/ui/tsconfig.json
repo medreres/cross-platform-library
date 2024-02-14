@@ -16,33 +16,13 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "react-jsx",
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "plugins": [
       { "transform": "typescript-transform-paths", "afterDeclarations": true },
       { "transform": "typescript-transform-paths" }
     ],
-    "paths": {
-      "assets": ["src/assets/index.ts"],
-      "assets/*": ["src/assets/*"],
-      "hooks": ["src/hooks/index.ts"],
-      "hooks/*": ["src/hooks/*"],
-      "components": ["src/components/index.ts"],
-      "atoms": ["src/components/atoms/index.ts"],
-      "atoms/*": ["src/components/atoms/*"],
-      "molecules": ["src/components/molecules/index.ts"],
-      "molecules/*": ["src/components/molecules/*"],
-      "types": ["src/components/types.ts"],
-      "overlay": ["src/components/overlay/index.ts"],
-      "content": ["src/content/index.ts"],
-      "constants/*": ["src/constants/*"],
-      "utils": ["src/utils/index.ts"],
-      "theme": ["src/theme/index.ts"],
-      "storybook/*": ["storybook/*"],
-      "providers": ["src/providers/index.ts"],
-      "helpers": ["src/components/helpers/index.ts"]
-    }
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.json"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"],
   "extends": "@tsconfig/react-native/tsconfig.json"
 }
