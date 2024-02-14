@@ -4,19 +4,33 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
+    "build": "webpack",
+    "dev": "webpack --watch --env PLATFORM=web",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-react": "^7.23.3",
+    "@repo/typescript-config": "*",
+    "@swc/core": "^1.4.1",
+    "@tsconfig/react-native": "^3.0.3",
+    "@types/node": "^20.11.17",
     "@types/react": "^18.2.46",
     "@types/react-native": "^0.73.0",
-    "@repo/typescript-config": "*",
+    "@types/webpack": "^5.28.5",
+    "babel-loader": "^9.1.3",
+    "babel-plugin-react-native-web": "^0.19.10",
+    "ts-loader": "^9.5.1",
     "tsup": "^8.0.1",
-    "typescript": "^5.3.3"
+    "ttypescript": "^1.5.13",
+    "typescript": "4.8.4",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-native": "^0.73.1"
+    "react-native": "^0.73.1",
+    "react-native-web": "^0.19.10"
   }
 }
