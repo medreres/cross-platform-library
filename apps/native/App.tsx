@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { Button } from "@repo/ui";
+import { Button, Component } from "@repo/ui";
 
 export default function Native() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Native</Text>
+      {/* <Component /> */}
       <Button
         onClick={() => {
           console.log("Pressed!");

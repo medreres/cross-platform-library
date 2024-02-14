@@ -6,7 +6,7 @@ import {
   Text,
 } from "react-native";
 
-interface ButtonProps {
+type ButtonProps = {
   text: string;
   onClick?: (event: GestureResponderEvent) => void;
 }

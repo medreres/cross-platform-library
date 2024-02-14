@@ -1,0 +1,34 @@
+{
+  "printWidth": 120,
+  "tabWidth": 2,
+  "useTabs": false,
+
+  "semi": true,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "quoteProps": "consistent",
+
+  "trailingComma": "all",
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+
+  "endOfLine": "lf",
+
+  "importOrder": [
+    "^react(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^(components|atoms|molecules|storybook|assets|constants|content|hooks|theme|providers|types|utils|helpers)",
+    "^\\./\\w",
+    "^\\.\\./\\w",
+    "^(\\.\\./){2}\\w",
+    "^(\\.\\./){3}\\w",
+    "^(\\.\\./){4}\\w",
+    "^(\\.\\./){5,}\\w",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderGroupNamespaceSpecifiers": false,
+  "importOrderCaseInsensitive": true
+}
