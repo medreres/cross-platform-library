@@ -1,6 +1,3 @@
 .container {
   text-align: center;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
 }

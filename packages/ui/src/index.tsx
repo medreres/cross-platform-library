@@ -1,2 +1,1 @@
-export * from './button.native'
-export * from './button.web'
+export { Button, type ButtonProps } from "./button";
