@@ -32,24 +32,23 @@ const config: (env: Record<string, string>) => Configuration = (env) => {
     entry: "./src/index.tsx",
     mode: "development",
     devtool: "inline-source-map",
+    output: {
+      filename: `index.${platform}.js`,
+      path: path.resolve(__dirname, "dist"),
+      library: { type: "commonjs" },
+    },
+    externals,
     module: {
       rules: [
         {
-          test: /\.(tsx?)$/,
-          loader: "babel-loader",
+          use: "babel-loader",
           include: /src/,
         },
       ],
     },
     resolve: {
-      extensions: [".ts", ".tsx", ".js", ...platformExtensions],
+      extensions: ["", ".js", ".jsx", ".ts", ".tsx", ...platformExtensions],
     },
-    output: {
-      filename: "index.js",
-      path: path.resolve(__dirname, "dist"),
-      library: { type: "commonjs" },
-    },
-    externals,
   };
 };
 

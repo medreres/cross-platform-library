@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   TouchableOpacity,
   StyleSheet,
@@ -14,7 +13,7 @@ export interface ButtonProps {
 export function Button({ text, onClick }: ButtonProps) {
   return (
     <TouchableOpacity style={styles.button} onPress={onClick}>
-      <Text style={styles.text}>{text}</Text>
+      <Text style={styles.text}>Native</Text>
     </TouchableOpacity>
   );
 }
