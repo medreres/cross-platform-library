@@ -5,10 +5,10 @@ import {
   Text,
 } from "react-native";
 
-export interface ButtonProps {
+export type ButtonProps = {
   text: string;
   onClick?: (event: GestureResponderEvent) => void;
-}
+};
 
 export function Button({ text, onClick }: ButtonProps) {
   return (

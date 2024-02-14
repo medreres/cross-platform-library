@@ -1,6 +1,7 @@
 import path from "path";
 import { Configuration } from "webpack";
 import { externals } from "./externals";
+import TypescriptDeclarationPlugin from "typescript-declaration-webpack-plugin";
 
 const dTsFiles = /(?<=(d))\.(tsx?)$/;
 const tsFilesWithoutDts = /(?<!(d))\.(tsx?)/;
@@ -23,6 +24,13 @@ const config: (env: Record<string, string>) => Configuration = (env) => {
       // filename: `index.${platform}.js`,
       filename: `index.js`,
       path: path.resolve(__dirname, "../dist"),
+      chunkFilename: (pathData, assetInfo) => {
+        console.log("pathData", pathData);
+
+        console.log("assetInfo", assetInfo);
+
+        return "test";
+      },
       library: { type: "commonjs" },
       clean: true,
     },
@@ -30,20 +38,29 @@ const config: (env: Record<string, string>) => Configuration = (env) => {
     module: {
       rules: [
         {
-          test: dTsFiles,
-          use: "ts-loader",
-          include: /src/,
-        },
-        {
           test: tsFilesWithoutDts,
           use: "ts-loader",
           include: /src/,
         },
+        // {
+        //   test: dTsFiles,
+        //   loader: "file-loader",
+        //   options: {
+        //     name: "[name].[ext]",
+        //   },
+        // },
       ],
     },
     resolve: {
       extensions: ["", ".js", ".jsx", ".ts", ".tsx", ...platformExtensions],
     },
+    plugins: [
+      new TypescriptDeclarationPlugin({
+        removeMergedDeclarations: true,
+        out: "index.d.ts",
+        removeComments: false,
+      }),
+    ],
   };
 };
 

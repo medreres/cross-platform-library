@@ -1,20 +1,22 @@
 import {
   TouchableOpacity,
   StyleSheet,
-  GestureResponderEvent,
   Text,
 } from "react-native";
 
-export interface ButtonProps {
+import { MouseEvent } from "react";
+
+export type ButtonProps = {
   text: string;
-  onClick?: (event: GestureResponderEvent) => void;
-}
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+};
+
 
 export function Button({ text, onClick }: ButtonProps) {
   return (
-    <TouchableOpacity style={styles.button} onPress={onClick}>
+    <button style={styles.button} onClick={onClick}>
       <Text style={styles.text}>web</Text>
-    </TouchableOpacity>
+    </button>
   );
 }
 

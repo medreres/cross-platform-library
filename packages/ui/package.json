@@ -27,6 +27,7 @@
     "tsup": "^8.0.1",
     "ttypescript": "^1.5.15",
     "typescript": "^5.3.3",
+    "typescript-declaration-webpack-plugin": "^0.3.0",
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4"
   },
