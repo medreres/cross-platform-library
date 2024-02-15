@@ -1,18 +1,15 @@
 import {
   TouchableOpacity,
   StyleSheet,
-  GestureResponderEvent,
   Text,
 } from "react-native";
+import {  ModalProps } from "./types";
 
-export type ButtonProps = {
-  text: string;
-  onClick?: (event: GestureResponderEvent) => void;
-};
-
-export function Button({ text, onClick }: ButtonProps) {
+export function Modal({ text, onOpen }: ModalProps) {
   return (
-    <TouchableOpacity style={styles.button} onPress={onClick}>
+    <TouchableOpacity style={styles.button} 
+    // onPress={onClick}
+    >
       <Text style={styles.text}>Native</Text>
     </TouchableOpacity>
   );

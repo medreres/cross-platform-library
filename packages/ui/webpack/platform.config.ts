@@ -1,18 +1,14 @@
 import path from "path";
 import { Configuration } from "webpack";
-import { externals } from "./externals";
-import TypescriptDeclarationPlugin from "typescript-declaration-webpack-plugin";
+import { externals, outputPath, platformsExtensions, tsFilesWithoutDts } from "./config";
+import TsDeclarationWebpackPlugin from "typescript-declaration-webpack-plugin";
 
-const dTsFiles = /(?<=(d))\.(tsx?)$/;
-const tsFilesWithoutDts = /(?<!(d))\.(tsx?)/;
-
-const platformsExtensions = {
-  web: [".web.ts", ".web.tsx"],
-  mobile: [".native.ts", ".native.tsx"],
-} satisfies Record<string, string[]>;
-
-const config: (env: Record<string, string>) => Configuration = (env) => {
+const config: (env) => Configuration = (env) => {
   const platform = env.PLATFORM as keyof typeof platformsExtensions;
+
+  if (!platform) {
+    throw new Error("Specify the bundle platform!");
+  }
 
   const platformExtensions = platformsExtensions[platform];
 
@@ -21,16 +17,9 @@ const config: (env: Record<string, string>) => Configuration = (env) => {
     mode: "development",
     devtool: "inline-source-map",
     output: {
-      // filename: `index.${platform}.js`,
-      filename: `index.js`,
+      filename: "index.js",
       path: path.resolve(__dirname, "../dist"),
-      chunkFilename: (pathData, assetInfo) => {
-        console.log("pathData", pathData);
-
-        console.log("assetInfo", assetInfo);
-
-        return "test";
-      },
+      chunkFilename: "test",
       library: { type: "commonjs" },
       clean: true,
     },
@@ -39,26 +28,27 @@ const config: (env: Record<string, string>) => Configuration = (env) => {
       rules: [
         {
           test: tsFilesWithoutDts,
-          use: "ts-loader",
+          loader: "ts-loader",
           include: /src/,
+          options: {
+            compiler: "ttypescript",
+            onlyCompileBundledFiles: true,
+            compilerOptions: {
+              declaration: true,
+              declarationDir: outputPath,
+            },
+          },
         },
-        // {
-        //   test: dTsFiles,
-        //   loader: "file-loader",
-        //   options: {
-        //     name: "[name].[ext]",
-        //   },
-        // },
       ],
     },
     resolve: {
-      extensions: ["", ".js", ".jsx", ".ts", ".tsx", ...platformExtensions],
+      extensions: [".js", ".jsx", ".ts", ".tsx", ...platformExtensions],
     },
     plugins: [
-      new TypescriptDeclarationPlugin({
+      new TsDeclarationWebpackPlugin({
         removeMergedDeclarations: true,
+        removeComments: true,
         out: "index.d.ts",
-        removeComments: false,
       }),
     ],
   };

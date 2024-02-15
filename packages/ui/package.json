@@ -4,8 +4,9 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
+    "build:web": "webpack --env PLATFORM=web -c webpack/platform.config.ts",
+    "build:mobile": "webpack --env PLATFORM=mobile -c webpack/platform.config.ts",
     "build": "webpack --env PLATFORM=web -c webpack/platform.config.ts",
-    "build:types": "webpack --env PLATFORM=web -c webpack/types.config.ts",
     "dev": "webpack --watch --env PLATFORM=web -c webpack/platform.config.ts",
     "clean": "rm -rf dist"
   },
@@ -26,7 +27,7 @@
     "ts-loader": "^9.5.1",
     "tsup": "^8.0.1",
     "ttypescript": "^1.5.15",
-    "typescript": "^5.3.3",
+    "typescript": "4.8.4",
     "typescript-declaration-webpack-plugin": "^0.3.0",
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4"

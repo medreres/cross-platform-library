@@ -1,20 +1,12 @@
 import {
-  TouchableOpacity,
   StyleSheet,
   Text,
 } from "react-native";
+import { ModalProps } from "./types";
 
-import { MouseEvent } from "react";
-
-export type ButtonProps = {
-  text: string;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-};
-
-
-export function Button({ text, onClick }: ButtonProps) {
+export function Modal({ text, onOpen }: ModalProps) {
   return (
-    <button style={styles.button} onClick={onClick}>
+    <button style={styles.button}>
       <Text style={styles.text}>web</Text>
     </button>
   );
