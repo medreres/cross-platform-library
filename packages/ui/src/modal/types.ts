@@ -1,4 +1,4 @@
 export type ModalProps = {
-  text: string;
+  text?: string;
   onOpen?: () => void;
 };

@@ -1,17 +1,17 @@
 import {
-  TouchableOpacity,
   StyleSheet,
   Text,
+  View,
 } from "react-native";
-import {  ModalProps } from "./types";
+import { ModalProps } from "./types";
 
-export function Modal({ text, onOpen }: ModalProps) {
+export function Modal(props: ModalProps) {
+  const { text, onOpen } = props;
+  
   return (
-    <TouchableOpacity style={styles.button} 
-    // onPress={onClick}
-    >
+    <View style={styles.button}>
       <Text style={styles.text}>Native</Text>
-    </TouchableOpacity>
+    </View>
   );
 }
 

@@ -1,26 +1,26 @@
-import path from "path";
-import { Configuration } from "webpack";
-import { externals, outputPath, platformsExtensions, tsFilesWithoutDts } from "./config";
-import TsDeclarationWebpackPlugin from "typescript-declaration-webpack-plugin";
+import path from 'path';
+import { Configuration, WebpackPluginInstance } from 'webpack';
+import { externals, outputPath, platformsExtensions, tsFilesWithoutDts } from './config';
+import TsDeclarationWebpackPlugin from 'typescript-declaration-webpack-plugin';
 
-const config: (env) => Configuration = (env) => {
+const config = (env) => {
   const platform = env.PLATFORM as keyof typeof platformsExtensions;
 
   if (!platform) {
-    throw new Error("Specify the bundle platform!");
+    throw new Error('Specify the bundle platform!');
   }
 
   const platformExtensions = platformsExtensions[platform];
 
   return {
-    entry: "./src/index.tsx",
-    mode: "development",
-    devtool: "inline-source-map",
+    entry: './src/index.tsx',
+    mode: 'development',
+    devtool: 'inline-source-map',
     output: {
-      filename: "index.js",
-      path: path.resolve(__dirname, "../dist"),
-      chunkFilename: "test",
-      library: { type: "commonjs" },
+      filename: 'index.js',
+      path: path.resolve(__dirname, '../dist'),
+      chunkFilename: 'test',
+      library: { type: 'commonjs' },
       clean: true,
     },
     externals,
@@ -28,10 +28,10 @@ const config: (env) => Configuration = (env) => {
       rules: [
         {
           test: tsFilesWithoutDts,
-          loader: "ts-loader",
+          loader: 'ts-loader',
           include: /src/,
           options: {
-            compiler: "ttypescript",
+            compiler: 'ttypescript',
             onlyCompileBundledFiles: true,
             compilerOptions: {
               declaration: true,
@@ -42,16 +42,10 @@ const config: (env) => Configuration = (env) => {
       ],
     },
     resolve: {
-      extensions: [".js", ".jsx", ".ts", ".tsx", ...platformExtensions],
+      extensions: ['.js', '.jsx', '.ts', '.tsx', ...platformExtensions],
     },
-    plugins: [
-      new TsDeclarationWebpackPlugin({
-        removeMergedDeclarations: true,
-        removeComments: true,
-        out: "index.d.ts",
-      }),
-    ],
-  };
+    // plugins: [new TsDeclarationWebpackPlugin() as unknown as WebpackPluginInstance],
+  } satisfies Configuration;
 };
 
 export default config;

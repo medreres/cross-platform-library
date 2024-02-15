@@ -1,7 +1,7 @@
-import React from 'react'
+import { FC } from "react"
 
-export const Datepicker = () => {
+export const DatePicker: FC = () => {
   return (
-    <div>datepicker</div>
+    <div>datepicker web</div>
   )
 }

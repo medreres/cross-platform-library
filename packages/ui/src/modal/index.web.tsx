@@ -1,14 +1,13 @@
 import {
   StyleSheet,
-  Text,
 } from "react-native";
 import { ModalProps } from "./types";
 
-export function Modal({ text, onOpen }: ModalProps) {
+export function Modal(props: ModalProps) {
+  const { text, onOpen  } = props;
+
   return (
-    <button style={styles.button}>
-      <Text style={styles.text}>web</Text>
-    </button>
+    <button style={styles.button}>Web</button>
   );
 }
 

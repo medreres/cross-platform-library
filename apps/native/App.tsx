@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { Datepicker, Modal } from "@repo/ui";
+import { DatePicker, Modal } from "@repo/ui";
 
 export default function Native() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Native</Text>
-      <Datepicker />
+      <DatePicker />
       <Modal  />
       <StatusBar style="auto" />
     </View>
