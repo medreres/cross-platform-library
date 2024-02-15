@@ -18,14 +18,12 @@ export const removePlatformExtensions = (dir: string) => {
         const newFileName = file.split('.web').join('');
         const newPath = path.join(dir, newFileName);
         fs.renameSync(filePath, newPath);
-        console.log(`Renamed: ${filePath} -> ${newPath}`);
       }
 
       if (file.includes('.native')) {
         const newFileName = file.split('.native').join('');
         const newPath = path.join(dir, newFileName);
         fs.renameSync(filePath, newPath);
-        console.log(`Renamed: ${filePath} -> ${newPath}`);
       }
     }
   });
