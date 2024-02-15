@@ -1,5 +1,5 @@
-import { ModalProps } from "./types";
+import { ModalProps } from './types';
 
-declare function Modal({ text, onClick }: ModalProps): React.JSX.Element;
+declare function Modal(props: ModalProps): React.JSX.Element;
 
 export { Modal, type ModalProps };
