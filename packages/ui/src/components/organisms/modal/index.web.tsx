@@ -7,7 +7,7 @@ export function Modal(props: ModalProps) {
   const { text, onOpen  } = props;
 
   return (
-    <button style={styles.button}>Web</button>
+    <button onClick={onOpen} style={styles.button}>{text}</button>
   );
 }
 

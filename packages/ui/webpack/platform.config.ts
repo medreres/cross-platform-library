@@ -31,15 +31,9 @@ const config = (env) => {
         {
           test: tsFilesWithoutDts,
           loader: 'ts-loader',
-          include: /src/,
-          exclude: /node_modules/,
           options: {
             compiler: 'ttypescript',
             onlyCompileBundledFiles: true,
-            compilerOptions: {
-              declaration: true,
-              declarationDir: distPath,
-            },
           },
         },
       ],

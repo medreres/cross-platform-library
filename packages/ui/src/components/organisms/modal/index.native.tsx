@@ -1,7 +1,7 @@
 import {
   StyleSheet,
   Text,
-  View,
+  TouchableOpacity,
 } from "react-native";
 import { ModalProps } from "./types";
 
@@ -9,9 +9,9 @@ export function Modal(props: ModalProps) {
   const { text, onOpen } = props;
   
   return (
-    <View style={styles.button}>
-      <Text style={styles.text}>Native</Text>
-    </View>
+    <TouchableOpacity style={styles.button} onPress={onOpen}>
+      <Text style={styles.text}>{text}</Text>
+    </TouchableOpacity>
   );
 }
 
