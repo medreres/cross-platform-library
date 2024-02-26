@@ -1,6 +1,6 @@
 "use client";
 
-import {DatePicker, Modal} from '@repo/ui'
+import {DatePicker,Modal} from '@repo/ui'
 
 import styles from "../styles/index.module.css";
 

@@ -4,10 +4,10 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build:web": "webpack --env PLATFORM=web -c webpack/platform.config.ts",
-    "build:mobile": "webpack --env PLATFORM=mobile -c webpack/platform.config.ts",
-    "build": "webpack -c webpack/platform.config.ts",
-    "dev": "webpack --watch --env PLATFORM=$PLATFORM -c webpack/platform.config.ts",
+    "build:web": "webpack --env PLATFORM=web -c webpack/types.config.ts & webpack --env PLATFORM=web -c webpack/platform.config.ts",
+    "build:mobile": "webpack --env PLATFORM=mobile -c webpack/types.config.ts",
+    "build": "webpack -c webpack/types.config.ts",
+    "dev": "webpack --watch --env PLATFORM=$PLATFORM -c webpack/types.config.ts & webpack --watch --env PLATFORM=$PLATFORM -c webpack/platform.config.ts",
     "clean": "rm -rf dist"
   },
   "devDependencies": {

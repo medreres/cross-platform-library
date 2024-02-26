@@ -6,7 +6,8 @@
     "noEmit": false,
     "declaration": true,
     "outDir": "dist",
-    "baseUrl": "./src",
+    "baseUrl": ".",
+    "types": [ "node"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"],
